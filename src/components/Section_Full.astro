@@ -1,0 +1,29 @@
+---
+export interface Props {
+    bg: String,
+    slogan: String,
+    btn_text: String,
+    btn_url: String,
+}
+
+const { bg, slogan, btn_text, btn_url } = Astro.props;
+---
+
+<div class="section_full" style={"background-image:url("+bg+")"}>
+    <div class="pt-56 pb-32">
+        <h1 class="text-6xl md:text-8xl text-white italic text-center ">{slogan}</h1>
+    </div>
+    <div class="pb-24">
+        <div class="button text-3xl font-bold bg-slate-200 m-auto border-purple-400 border-4 w-fit
+        hover:bg-purple-400 transition-colors duration-500 p-2"><a href={btn_url}>{btn_text}</div>
+    </div>
+</div>
+<style>
+    .section_full {
+        width: 100% ;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top;
+        
+    }
+</style>

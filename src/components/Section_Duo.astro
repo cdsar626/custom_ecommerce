@@ -1,0 +1,32 @@
+---
+export interface Props {
+    bg: String,
+    title: String,
+    p1: String,
+    p2: String,
+}
+
+const { bg, title, p1, p2 } = Astro.props;
+---
+
+<div class="section_duo md:flex">
+    <div class="duo_a flex-1 bg-purple-300 mb-2 md:mb-0 flex-col">
+        <div class="h-full italic flex flex-col gap-5 justify-center mx-5">
+            <h3 class="text-5xl text-center mt-5">{title}</h3>
+            <p class="text-lg text-justify ">{p1}</p>
+            <p class="text-lg text-justify mb-5">{p2}</p>
+        </div>
+    </div>
+    <div class="duo_b flex-1">
+        <image src={bg}>
+    </div>
+</div>
+<style>
+    .section_full {
+        width: 100% ;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top;
+        
+    }
+</style>

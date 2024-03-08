@@ -1,0 +1,70 @@
+--- 
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+import { ViewTransitions, fade } from 'astro:transitions';
+
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+const navbar_links = [
+	{
+		title: "Home",
+		href: "/",
+	},
+	{
+		title: "Weekly Meal Plan",
+		href: "/weekly-meal",
+	},
+	{
+		title: "FAQs",
+		href: "/faqs",
+	},
+	{
+		title: "Contact Us",
+		href: "/contact-us",
+	},
+]
+
+const footer_links = [
+	{
+		text: "info@andreaskitchenmeals.com",
+		url: "mailto:info@andreaskitchenmeals.com",
+	},
+	{
+		text: "Terms of Service",
+		url: "/terms-of-service",
+	},
+]
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Andreas Kitchen Meals clone">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ViewTransitions transitions:animate={fade({ duration: '0.15s', easing: 'linear' })}/>
+	</head>
+	<body>
+		<Navbar buttons={navbar_links} current={Astro.url.pathname} logo_url="/AKMlogo.png"></Navbar>
+		<slot />
+		<Footer title="Andrea's Kitchen Meals" subtitle="©2023 por Andrea's Kitchen Meals."
+		links={footer_links}></Footer>
+	</body>
+	<div class="sr-element" data-embed="basket"><script type="application/json">{"publishable_key":"sr_live_pk_dbad9d35a347e855ccace50f49efa04e9d89","options":{"basket_style":"sidebar","basket_position":"bottom-left"},"includes":{"show_pop_up_adding_item_to_cart":"1","show_image_thumbnails":"1","show_select_quantity":"1","show_overlay_when_open":"1","show_cart_count":"1","show_cart_total":"1"},"styles":{"basket_background":"#ead1dc","basket_color":"#000000","basket_text_color":"#000000","basket_counter_background":"#000000","basket_counter_color":"#ffffff","cart_background":"#ffffff","cart_text_color":"#666666","cart_button_background":"#233642","cart_button_color":"#ffffff","cart_links_text_color":"#8e0180","cart_border_color":"#984444","cart_x_offset":"0"}}</script></div><script async src="https://cdn.shoprocket.io/loader.js"></script>
+	<script>
+		//todo! check minimun items and block them
+	</script>
+</html>
+<style is:global>
+	.snipcart-add-item {
+		border-radius:5px;
+		border: solid 2px darkgray;
+	}
+</style>

@@ -1,0 +1,49 @@
+---
+export interface Props {
+    buttons: Array<Button>;
+    logo_url: String;
+    current: String;
+}
+
+export interface Button {
+    title: string,
+    href: string,
+}
+
+const { buttons, current, logo_url } = Astro.props;
+
+---
+<div class="navbar sticky top-0 w-full bg-slate-50 z-10">
+    <div class="navbar_title flex justify-center m-5">
+        <div class="logo" style={"background-image:url("+logo_url+")"}><a class="a_title" href="/"></a></div>
+        <h1 class="text-xl text-center self-center">Andrea's Kitchen Meals</h1>
+    </div>
+    <ul class="flex rounded-md justify-evenly text-xl shadow-md shadow-purple-400 w-full">
+        { buttons.map((obj) => {
+                    if(obj.href == current) {
+                        return <li class="bg-purple-300 drop-shadow-[2_20px_20px_rgba(0,0,0,0.25)] rounded-sm p-4"><a href={obj.href}>{obj.title}</a></li>
+                    } else {
+                        return <li class="hover:bg-purple-300 drop-shadow-[2_20px_20px_rgba(0,0,0,0.25)] rounded-sm p-4"><a href={obj.href}>{obj.title}</a></li>
+                    }
+                }
+            )}
+    </ul>
+</div>
+
+<style>
+    .a_title {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+	.logo {
+        background-size: cover;
+        width: 80px;
+        height: 80px;
+        position: relative;
+    }
+
+    .navbar {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+</style>

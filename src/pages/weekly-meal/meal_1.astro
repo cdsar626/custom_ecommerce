@@ -1,0 +1,30 @@
+---
+import Layout from '/src/layouts/Layout.astro';
+---
+
+<Layout title="Andrea's Kitechen Meals | meals prep | Orlando, Fl, USA">
+    <div class="back_button" ="/weekly-meal">Back</div>
+	<div class="prose m-auto">
+        <h1> You have any question? </h1>
+        <p> Write us to our phone number, instagram, or email, and we would be glad to resolve any of your doubts.</p>
+        <ul>
+            <li>Phone: </li>
+            <li>Instagram: </li>
+            <li>Email: </li>
+        </ul>
+    </div>
+</Layout>
+<script client:only>
+    // Find all buttons with the `alert` class on the page.
+    // const buttons = document.querySelectorAll('div.back_button');
+  
+    // Handle clicks on each button.
+    document.querySelectorAll('div.back_button').forEach((button) => {
+      button.addEventListener('click', () => {
+        history.back();
+      });
+    });
+</script>
+
+<style>
+</style>
